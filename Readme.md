@@ -7,19 +7,22 @@ After making changes to any of the config files the defconfig files need to be u
 
 # buildroot
 
-```$ make menuconfig
+```
+$ make menuconfig
 $ make savedefconfig
 ```
 
 # linux
 
-```$ make linux-menuconfig
+```
+$ make linux-menuconfig
 $ make linux-update-defconfig
 ```
 
 # busybox
 
-```$ make busybox-menuconfig
+```
+$ make busybox-menuconfig
 $ make busybox-update-config
 ```
 
