@@ -1,0 +1,30 @@
+name: Makefile CI
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Cache downloads
+      uses: actions/cache@v3
+      with:
+        path: dl/
+        key: dl
+    - name: Update submodules
+      run: git submodule update --init
+    - name: Compile
+      run: |
+        cd buildroot
+        make BR2_EXTERNAL=$PWD/.. myboard_defconfig
+        make
+    - uses: actions/upload-artifact@v3.1.0
+      with:
+        name: sdcard.img
+        path: buildroot/output/images/sdcard.img
