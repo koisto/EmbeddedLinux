@@ -52,3 +52,6 @@ BR2_PACKAGE_HOST_UBOOT_TOOLS_BOOT_SCRIPT_SOURCE="board/olimex/a20_olinuxino/boot
 # Additional tools
 BR2_PACKAGE_HOST_GENIMAGE=y
 BR2_PACKAGE_MINIECHO=y
+
+# out of tree download directory
+BR2_DL_DIR="$(BR2_EXTERNAL_EMBEDDEDLINUX_PATH)/dl"
