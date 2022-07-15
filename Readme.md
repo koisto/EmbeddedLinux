@@ -1,3 +1,5 @@
+[![Makefile CI](https://github.com/koisto/EmbeddedLinux/actions/workflows/makefile.yml/badge.svg)](https://github.com/koisto/EmbeddedLinux/actions/workflows/makefile.yml)
+
 # Embedded Linux
 This project aims to capture a series of experiments with embedded Linux using Buildroot.
 
