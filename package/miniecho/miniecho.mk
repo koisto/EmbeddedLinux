@@ -3,26 +3,4 @@ MINIECHO_SITE = $(call github,koisto,miniecho,$(MINIECHO_VERSION))
 MINIECHO_INSTALL_STAGING = NO
 MINIECHO_INSTALL_TARGET = YES
 
-MINIECHO_DEPENDENCIES = host-cargo
-
-MINIECHO_CARGO_ENV = CARGO_HOME=$(HOST_DIR)/share/cargo
-MINIECHO_CARGO_MODE = $(if $(BR2_ENABLE_DEBUG),debug,release)
-
-MINIECHO_BIN_DIR = target/$(RUSTC_TARGET_NAME)/$(MINIECHO_CARGO_MODE)
-
-MINIECHO_CARGO_OPTS = \
-	--$(MINIECHO_CARGO_MODE) \
-		--target=$(RUSTC_TARGET_NAME) \
-		--manifest-path=$(@D)/Cargo.toml
-
-define MINIECHO_BUILD_CMDS
-	$(TARGET_MAKE_ENV) $(MINIECHO_CARGO_ENV) \
-		cargo build $(MINIECHO_CARGO_OPTS)
-endef
-
-define MINIECHO_INSTALL_TARGET_CMDS
-	$(INSTALL) -D -m 0755 $(@D)/$(MINIECHO_BIN_DIR)/miniecho \
-		$(TARGET_DIR)/usr/bin/miniecho
-endef
-
-$(eval $(generic-package))
+$(eval $(cargo-package))
