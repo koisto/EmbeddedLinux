@@ -15,7 +15,7 @@ jobs:
     - name: Cache downloads
       uses: actions/cache@v3
       with:
-        path: dl/
+        path: buildroot/dl/
         key: dl
     - name: Update submodules
       run: git submodule update --init
